@@ -5,13 +5,13 @@ This is the implementation of our paper "Towards-Accurate-Binary-Neural-Networks
 Existing Binary Neural Networks (BNNs) mainly operate on local convolutions with binarization function. However, such simple bit operations lack the ability of modeling contextual dependencies, which is critical for learning discriminative deep representations in vision models. In this work, we tackle this issue by presenting new designs of binary neural modules, which enables BNNs to learn effective contextual dependencies. First, we propose a binary multi-layer perceptron (MLP) block as an alternative to binary convolution blocks to directly model contextual dependencies. Both short-range and long-range feature dependencies are modeled by binary MLPs, where the former provides local inductive bias and the latter breaks limited receptive field in binary convolutions. A sparse contextual interaction is achieved with the long-short range binary MLP block. Second, we compute the contextual dynamic embeddings to determine the binarization thresholds in general binary convolutional blocks. Armed with our binary MLP blocks and improved binary convolution, we build the BNNs with explicit Contextual Dependency modeling, termed as BCDNet. On the standard ImageNet-1K classification benchmark, the BCDNet achieves 72.3\% Top-1 accuracy and outperforms leading binary methods by a large margin. In particular, the proposed BCDNet exceeds the state-of-the-art ReActNet-A by 2.9\% Top-1 accuracy with similar operations, demonstrating the effectiveness of our binary designs.
 
 <div align=center>
-<img width=60% src="https://github.com/Xingrun-Xing/BCDNet/blob/main/images/fig4.jpg"/>
+<img width=60% src="https://github.com/Sense-GVT/BCDNet/blob/main/images/fig4.jpg"/>
 </div>
 
 The performance of BCDNets on ImageNet-1K is:
 
 <div align=center>
-<img width=60% src="https://github.com/Xingrun-Xing/BCDNet/blob/main/images/fig2.jpg"/>
+<img width=60% src="https://github.com/Sense-GVT/BCDNet/blob/main/images/fig2.jpg"/>
 </div>
 
 ## Run
