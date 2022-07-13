@@ -1,0 +1,80 @@
+model:
+    type: a_3f
+    kwargs: 
+        bn:
+            use_sync_bn: True      # whether to use syncbn
+            kwargs:                # kwargs of bn
+                var_mode: L2
+                group_size: 32
+
+dist:
+    sync: False
+
+optimizer:
+    type: AdamW
+    kwargs: {}
+
+lr_scheduler:
+    type: Cosine
+    kwargs:
+        base_lr: 0.001
+        warmup_lr: 0.004
+        warmup_steps: 15000
+        min_lr: 0.0
+        max_iter: 300000
+
+label_smooth: 0.1
+
+ema:
+    enable: False
+    kwargs:
+        decay: 0.99996
+
+data:
+    type: imagenet
+    read_from: mc
+    use_dali: False
+    batch_size: 8
+    num_workers: 4
+    pin_memory: True
+    input_size: 224
+    test_resize: 256
+
+    train:
+        root_dir: /mnt/lustre/share/images/train/
+        meta_file: /mnt/lustre/share/images/meta/train.txt
+        image_reader:
+            type: pil
+        sampler:
+            type: distributed_iteration
+        transforms:
+            type: STANDARD
+
+    test:
+        root_dir: /mnt/lustre/share/images/val/
+        meta_file: /mnt/lustre/share/images/meta/val.txt
+        image_reader:
+            type: pil
+        sampler:
+            type: distributed
+        transforms:
+            type: ONECROP
+        evaluator:
+            type: imagenet
+            kwargs:
+                topk: [1, 5]
+
+saver:
+    print_freq: 10
+    val_freq: 1000
+    save_many: False
+    pretrain:
+        auto_resume: True
+    #    path: checkpoints0/ckpt.pth.tar
+    #    ignore:
+    #        key:
+    #            - optimizer
+    #            - last_iter
+    #         model:
+    #             - module.fc.weight
+    #             - module.fc.bias

@@ -1,0 +1,88 @@
+model:
+    type: a_3
+    kwargs: 
+        bn:
+            use_sync_bn: True      # whether to use syncbn
+            kwargs:                # kwargs of bn
+                var_mode: L2
+                group_size: 32
+
+dist:
+    sync: False
+
+optimizer:
+    type: AdamW
+    kwargs:
+        lr: 0.0005
+        weight_decay: 0.0
+
+lr_scheduler:
+    type: Cosine
+    kwargs:
+        base_lr: 0.0005
+        warmup_lr: 0.0005
+        warmup_steps: 0
+        min_lr: 0.0
+        max_iter: 600000
+
+label_smooth: 0.1
+
+ema:
+    enable: False
+    kwargs:
+        decay: 0.99996
+
+data:
+    type: imagenet
+    read_from: mc
+    use_dali: False
+    batch_size: 8
+    num_workers: 4
+    pin_memory: True
+    input_size: 224
+    test_resize: 256
+
+    train:
+        root_dir: /mnt/lustre/share/images/train/
+        meta_file: /mnt/lustre/share/images/meta/train.txt
+        image_reader:
+            type: pil
+        sampler:
+            type: distributed_iteration
+        #transforms:
+        #    type: STANDARD
+        transforms:                   # torchvision transforms, flexible
+            # type: STANDARD
+            - type: random_resized_crop
+              kwargs:
+                  size: 224
+            - type: random_horizontal_flip
+            - type: to_tensor
+            - type: normalize
+              kwargs:
+                  mean: [0.485, 0.456, 0.406]
+                  std: [0.229, 0.224, 0.225]
+
+    test:
+        root_dir: /mnt/lustre/share/images/val/
+        meta_file: /mnt/lustre/share/images/meta/val.txt
+        image_reader:
+            type: pil
+        sampler:
+            type: distributed
+        transforms:
+            type: ONECROP
+        evaluator:
+            type: imagenet
+            kwargs:
+                topk: [1, 5]
+
+saver:
+    print_freq: 10
+    val_freq: 1000
+    save_many: False
+    pretrain:
+        auto_resume: True
+        #path: /mnt/lustre/xingxingrun/prototype38/model_zoo_exp/a_test/a_3f/checkpoints/ckpt.pth.tar
+
+    
