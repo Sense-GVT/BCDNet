@@ -37,7 +37,11 @@ The performance of BCDNets on ImageNet-1K is:
 * Step2: [BCDNet-A](https://drive.google.com/file/d/12jL6SzBppXJry0fLq0AzhY1dYFVGyfp5/view?usp=sharing)
 
 ## Contact
-{Xing X, Li Y, Li W, et al. Towards Accurate Binary Neural Networks via Modeling Contextual Dependencies[J]. arXiv preprint arXiv:2209.01404, 2022.}
-
+@article{xing2022towards,
+  title={Towards Accurate Binary Neural Networks via Modeling Contextual Dependencies},
+  author={Xing, Xingrun and Li, Yangguang and Li, Wei and Ding, Wenrui and Jiang, Yalong and Wang, Yufeng and Shao, Jing and Liu, Chunlei and Liu, Xianglong},
+  journal={arXiv preprint arXiv:2209.01404},
+  year={2022}
+}
 Xingrun Xing, BUAA (sy2002215 at buaa.edu.cn)
 Yalong Jiang, BUAA (AllenYLJiang at outlook.com)
