@@ -38,17 +38,11 @@ The performance of BCDNets on ImageNet-1K is:
 
 ## Citation
 
-<!--  @article{xing2022towards,
-      title={Towards Accurate Binary Neural Networks via Modeling Contextual Dependencies},
-      author={Xing, Xingrun and Li, Yangguang and Li, Wei and Ding, Wenrui and Jiang, Yalong and Wang, Yufeng and Shao, Jing and Liu, Chunlei and Liu, Xianglong},
-      journal={arXiv preprint arXiv:2209.01404},
-      year={2022}
-} -->
 ```
 @article{xing2022towards,
-    title={Towards Accurate Binary Neural Networks via Modeling Contextual Dependencies},
-    author={Xing, Xingrun and Li, Yangguang and Li, Wei and Ding, Wenrui and Jiang, Yalong and Wang, Yufeng and Shao, Jing and Liu, Chunlei and Liu, Xianglong},
-    journal={arXiv preprint arXiv:2209.01404},
-    year={2022}
+  title={Towards Accurate Binary Neural Networks via Modeling Contextual Dependencies},
+  author={Xing, Xingrun and Li, Yangguang and Li, Wei and Ding, Wenrui and Jiang, Yalong and Wang, Yufeng and Shao, Jing and Liu, Chunlei and Liu, Xianglong},
+  journal={arXiv preprint arXiv:2209.01404},
+  year={2022}
 }
 ```
